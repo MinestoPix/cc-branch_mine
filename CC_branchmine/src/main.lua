@@ -959,7 +959,7 @@ local function get_directions()
 end
 -- for main to send directions to turtle
 local function get_initiate()
-  initiate = {}
+  local initiate = {}
   initiate["side"] = nil
   initiate["length"] = nil
   initiate["started"] = false
