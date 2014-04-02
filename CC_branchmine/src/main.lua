@@ -259,9 +259,9 @@ init_progress = function()
         if (turtle == nil) then
             progress["paired_id"] = nil
             progress["retransmit_id"] = nil
-      progress["branch_progress"] = {} --new variable for current branching with all turtles progress
-      progress["branch_progress"]["left"] = 0
-      progress["branch_progress"]["right"]= 0
+            progress["branch_progress"] = {} --new variable for current branching with all turtles progress
+            progress["branch_progress"]["left"] = 0
+            progress["branch_progress"]["right"] = 0
         end
     end
 
@@ -923,7 +923,7 @@ local function get_fuel_and_supplies_if_needed(required_fuel)
 end
 -- for turtle to receive directions
 local function get_directions()
-  directions = {}
+  local directions = {}
   send_message("initiate")
   log("ran get directions")
   os.startTimer(3)
@@ -975,8 +975,14 @@ local function get_initiate()
 end
 -- turtle obeying directions
 local function turtle_start(directions)
+
+  directions["started"] = directions["started"] or false
+
+  log("starting: "..textutils.serialize(directions))
+  
   if not(directions["started"]) then
     
+    dig_out_start()
     
   end
   
@@ -1003,6 +1009,12 @@ empty_inventory = function() -- CHANGE THIS --
             end
         end
     end
+end
+-- diggs out "3x3x3" and positions to left-left
+local function dig_out_start()
+
+
+
 end
 -- check for ores and mine them if they are there
 --   will mine out anything that is not stone, dirt, gravel, or cobblestone
@@ -1575,10 +1587,10 @@ local function run_receiver_main()
             color_write(string.format("%3d", settings["number_of_branches"]), colors.magenta)
             retransmit = true
     -- turtle initiation
-    elseif (receiver_data["type"] == "initiate") and (progress["paired_id"] == receiver_data["turtle_id"]) and (progress["retransmit_id"] == receiver_data["retransmit_id"]) then
+      elseif (receiver_data["type"] == "initiate") and (progress["paired_id"] == receiver_data["turtle_id"]) and (progress["retransmit_id"] == receiver_data["retransmit_id"]) then
             send_confirm(receiver_data["turtle_id"])--#######################################################todo######################################################################################################################################
-      log("initiate sent")
-      send_message("initiate",get_initiate())
+            log("initiate sent")
+            send_message("initiate",get_initiate())
             retransmit = true
         -- branch_update event
         elseif (receiver_data["type"] == "branch_update") and (progress["paired_id"] == receiver_data["turtle_id"]) and (progress["retransmit_id"] == receiver_data["retransmit_id"]) then
