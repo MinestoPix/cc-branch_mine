@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.eclipse.koneki.ldt.debug.core.lualocaldebug">
+<booleanAttribute key="enableBreakOnFirstLine" value="false"/>
+<booleanAttribute key="enableDbgpLogging" value="false"/>
 <stringAttribute key="mainScript" value="src/main.lua"/>
 <stringAttribute key="nature" value="org.eclipse.koneki.ldt.nature"/>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
@@ -7,6 +9,10 @@
 </listAttribute>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
 <listEntry value="1"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.ui.favoriteGroups">
+<listEntry value="org.eclipse.debug.ui.launchGroup.debug"/>
+<listEntry value="org.eclipse.debug.ui.launchGroup.run"/>
 </listAttribute>
 <stringAttribute key="process_factory_id" value="org.eclipse.dltk.launching.scriptProcessFactory"/>
 <stringAttribute key="project" value="CC_branchmine"/>
